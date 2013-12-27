@@ -89,7 +89,7 @@ USE_TZ = True
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/') 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
@@ -103,13 +103,30 @@ TEMPLATE_DIRS = (
     os.path.join(PROJECT_ROOT, 'templates'),
 )
 
+# For some reasons, if I put bootstrap files under 'static' folder and run 'python manage.py collectstaic'
+# I can't render the bootstrap files. But if I place it somewhere else like 'templates' folder,
+# I can then run 'collectstatic'
+STATICFILES_DIRS =(
+    os.path.join(PROJECT_ROOT, 'templates/bootstrap'),
+)
+
 # to use UserProfile model defined in application users
 AUTH_PROFILE_MODULE = 'users.UserProfile'
 
 # below settings are used for account registration.
-
 ACCOUNT_ACTIVATION_DAYS = 7
 
+# Absolute path to the directory static files should be collected to.
+# Don't put anything in this directory yourself; store your static files
+# in apps' "static/" subdirectories and in STATICFILES_DIRS.
+# Example: "/var/www/example.com/static/"
+# STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static/')
+
+# STATIC_URL = os.path.join(PROJECT_ROOT, 'static/')
+# URL prefix for static files.
+# Example: "http://example.com/static/", "http://static.example.com/"
+# having the line below will mess up static admin site
+# STATIC_URL = 'http://127.0.0.1/static/'
 
 # -------------------------add your changes above this line-----------------
 # This essentially allows the database setting in 

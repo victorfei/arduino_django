@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-
+from views import *
 from django.contrib import admin
 admin.autodiscover()
 
@@ -8,6 +8,7 @@ urlpatterns = patterns('',
     # url(r'^$', 'arduino_django_site.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
+    url(r'^$', landing),
     url(r'^admin/', include(admin.site.urls)),
     
     # url settings for django-registration-1.0, which is a third party app.

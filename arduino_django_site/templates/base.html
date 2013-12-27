@@ -1,10 +1,12 @@
 <html>
     <head>
         <title>{% block title %}{% endblock %}</title>
+        <link href="/static/css/bootstrap.css" rel="stylesheet" media="screen">
         {% block script %}{% endblock %}
-        {% block style %}{% endblock %}
+        {% block style %}
+        {% endblock %}
     </head>
     <body>
-    {% block content %}{% endblock %}                    
+    {% block content %}{% endblock %}                 
     </body>
 </html>
