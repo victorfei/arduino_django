@@ -1,3 +1,4 @@
 # files that won't get pushed onto Git
 local_settings.py
 .pyc
+staticfiles

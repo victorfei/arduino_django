@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'registration',
     'email_usernames',
     'users',
+    'south',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -107,7 +108,7 @@ TEMPLATE_DIRS = (
 # I can't render the bootstrap files. But if I place it somewhere else like 'templates' folder,
 # I can then run 'collectstatic'
 STATICFILES_DIRS =(
-    os.path.join(PROJECT_ROOT, 'templates/bootstrap'),
+    os.path.join(PROJECT_ROOT, 'static'),
 )
 
 # to use UserProfile model defined in application users
@@ -116,17 +117,14 @@ AUTH_PROFILE_MODULE = 'users.UserProfile'
 # below settings are used for account registration.
 ACCOUNT_ACTIVATION_DAYS = 7
 
-# Absolute path to the directory static files should be collected to.
-# Don't put anything in this directory yourself; store your static files
-# in apps' "static/" subdirectories and in STATICFILES_DIRS.
-# Example: "/var/www/example.com/static/"
-# STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static/')
+# Specifiy what page to go to once the user is logged in.
+LOGIN_REDIRECT_URL = '/profile'
 
-# STATIC_URL = os.path.join(PROJECT_ROOT, 'static/')
-# URL prefix for static files.
-# Example: "http://example.com/static/", "http://static.example.com/"
-# having the line below will mess up static admin site
-# STATIC_URL = 'http://127.0.0.1/static/'
+# ---------------Heroku-----------------
+import dj_database_url
+DATABASES['default'] =  dj_database_url.config()
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # -------------------------add your changes above this line-----------------
 # This essentially allows the database setting in 

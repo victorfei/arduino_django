@@ -4,11 +4,10 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'arduino_django_site.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
-
+    # landing
     url(r'^$', landing),
+    # profile
+    url(r'', include('users.urls', namespace="users")),
     url(r'^admin/', include(admin.site.urls)),
     
     # url settings for django-registration-1.0, which is a third party app.
