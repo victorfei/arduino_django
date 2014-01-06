@@ -108,7 +108,7 @@ TEMPLATE_DIRS = (
 # I can't render the bootstrap files. But if I place it somewhere else like 'templates' folder,
 # I can then run 'collectstatic'
 STATICFILES_DIRS =(
-    os.path.join(PROJECT_ROOT, 'static'),
+    os.path.join(PROJECT_ROOT, 'templates/bootstrap'),
 )
 
 # to use UserProfile model defined in application users
