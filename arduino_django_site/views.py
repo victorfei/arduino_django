@@ -13,7 +13,7 @@ def landing(request):
     """ Links to the landing page, where the user can also request invite """
 #    if request:
 #        text = "GET request got"
-    text = request.scheme
+    text = request.path_info
 
     print text
     print "hello"
