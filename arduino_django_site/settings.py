@@ -134,7 +134,7 @@ LOGIN_REDIRECT_URL = '/profile'
 # ---------------Heroku-----------------
 import dj_database_url
 # leaving this line on heroku wouldn't work
-DATABASES['default'] =  dj_database_url.config()
+#DATABASES['default'] =  dj_database_url.config()
 # dj_database_url.config(os.environ['DATABASE_URL'])
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
