@@ -65,15 +65,13 @@ WSGI_APPLICATION = 'arduino_django_site.wsgi.application'
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
 # commented out for heroku
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'arduino_django',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '',
-    }
+DATABASES['default'] = {
+    'ENGINE': 'django.db.backends.mysql',
+    'HOST': 'us-cdbr-east-04.cleardb.com',
+    'USER': 'bc0084cdb35b5a',
+    'NAME': 'heroku_cc1e210ce87c27b',
+    'PASSWORD': '81e5d80a',
+    'OPTIONS': {'ssl': {'ca':'/path/to/ca-cert.pem', 'cert':'/path/to/cert.pem', 'key':'/path/to/key.pem'},},
 }
 
 ALLOWED_HOSTS = [
