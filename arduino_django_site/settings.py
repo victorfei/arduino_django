@@ -72,8 +72,8 @@ DATABASES = {
         'HOST': 'us-cdbr-east-04.cleardb.com',
         'USER': 'bc0084cdb35b5a',
         'PASSWORD': '81e5d80a',
-        'OPTIONS': {'ssl': {'ca':'/path/to/ca-cert.pem', 'cert':'/path/to/cert.pem', 'key':'/path/to/key.pem'},},
-
+#        'OPTIONS': {'ssl': {'ca':'/path/to/ca-cert.pem', 'cert':'/path/to/cert.pem', 'key':'/path/to/key.pem'},},
+#
     }
 }
 
