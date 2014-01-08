@@ -65,13 +65,16 @@ WSGI_APPLICATION = 'arduino_django_site.wsgi.application'
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
 # commented out for heroku
-DATABASES['default'] = {
-    'ENGINE': 'django.db.backends.mysql',
-    'HOST': 'us-cdbr-east-04.cleardb.com',
-    'USER': 'bc0084cdb35b5a',
-    'NAME': 'heroku_cc1e210ce87c27b',
-    'PASSWORD': '81e5d80a',
-    'OPTIONS': {'ssl': {'ca':'/path/to/ca-cert.pem', 'cert':'/path/to/cert.pem', 'key':'/path/to/key.pem'},},
+DATABASES = {
+    'default':{
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'heroku_cc1e210ce87c27b',
+        'HOST': 'us-cdbr-east-04.cleardb.com',
+        'USER': 'bc0084cdb35b5a',
+        'PASSWORD': '81e5d80a',
+        'OPTIONS': {'ssl': {'ca':'/path/to/ca-cert.pem', 'cert':'/path/to/cert.pem', 'key':'/path/to/key.pem'},},
+
+    }
 }
 
 ALLOWED_HOSTS = [
@@ -140,37 +143,37 @@ import dj_database_url
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-## Register database schemes in URLs.
-urlparse.uses_netloc.append('mysql')
-
-try:
-
-    # Check to make sure DATABASES is set in settings.py file.
-    # If not default to {}
-
-    if 'DATABASES' not in locals():
-        DATABASES = {}
-
-    if 'DATABASE_URL' in os.environ:
-        url = urlparse.urlparse(os.environ['DATABASE_URL'])
-
-        # Ensure default database exists.
-        DATABASES['default'] = DATABASES.get('default', {})
-
-        # Update with environment configuration.
-        DATABASES['default'].update({
-            'NAME': url.path[1:],
-            'USER': url.username,
-            'PASSWORD': url.password,
-            'HOST': url.hostname,
-            'PORT': url.port,
-        })
-
-
-        if url.scheme == 'mysql':
-            DATABASES['default']['ENGINE'] = 'django.db.backends.mysql'
-except Exception:
-    print 'Unexpected error:', sys.exc_info()
+# Register database schemes in URLs.
+#urlparse.uses_netloc.append('mysql')
+#
+#try:
+#
+#    # Check to make sure DATABASES is set in settings.py file.
+#    # If not default to {}
+#
+#    if 'DATABASES' not in locals():
+#        DATABASES = {}
+#
+#    if 'DATABASE_URL' in os.environ:
+#        url = urlparse.urlparse(os.environ['DATABASE_URL'])
+#
+#        # Ensure default database exists.
+#        DATABASES['default'] = DATABASES.get('default', {})
+#
+#        # Update with environment configuration.
+#        DATABASES['default'].update({
+#            'NAME': url.path[1:],
+#            'USER': url.username,
+#            'PASSWORD': url.password,
+#            'HOST': url.hostname,
+#            'PORT': url.port,
+#        })
+#
+#
+#        if url.scheme == 'mysql':
+#            DATABASES['default']['ENGINE'] = 'django.db.backends.mysql'
+#except Exception:
+#    print 'Unexpected error:', sys.exc_info()
 
 # -------------------------add your changes above this line-----------------
 # This essentially allows the database setting in 
